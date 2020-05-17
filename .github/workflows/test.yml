@@ -1,0 +1,40 @@
+name: test
+
+on: [push]
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        luaVersion: ["5.1.5", "5.2.4", "luajit-2.1.0-beta3"]
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+
+    - uses: leafo/gh-actions-lua@v5
+      with:
+        luaVersion: ${{ matrix.luaVersion }}
+
+    - uses: leafo/gh-actions-luarocks@v2
+
+    - name: dev dependencies
+      run: |
+        luarocks install luafilesystem
+        luarocks install luacheck
+        luarocks install lpeglj
+
+    - name: runtime dependencies
+      run: |
+        luarocks install lpeglj
+
+    - name: test
+      run: |
+        cd tests
+        ./testing_tests.lua
+
+    - name: lint
+      run: |
+        luacheck src
+        luacheck tests/testing_tests.lua

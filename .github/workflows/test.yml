@@ -23,16 +23,15 @@ jobs:
       run: |
         luarocks install luafilesystem
         luarocks install luacheck
-        luarocks install lpeglj
 
     - name: runtime dependencies
       run: |
-        luarocks install lpeglj
+        luarocks install lpeg
 
     - name: test
       run: |
         cd tests
-        ./testing_tests.lua
+        lua testing_tests.lua
 
     - name: lint
       run: |

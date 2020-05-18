@@ -6,3 +6,7 @@ cache = true
 ignore = {
   "212", -- Unused argument, _arg_name is easier to understand than _, so this option is set to off.
 }
+
+globals = {
+    "TestMyStuff", -- Name of test class in tests/ subfolder
+}

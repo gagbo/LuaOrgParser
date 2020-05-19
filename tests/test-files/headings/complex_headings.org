@@ -1,0 +1,7 @@
+* TODO [#B] COMMENT Level 1 commented
+
+This heading should be considered as commented
+
+** DONE [#A] Level 2 tagged :bare:#tag:other_tag:third@:okay%:
+
+This heading should have a few tags

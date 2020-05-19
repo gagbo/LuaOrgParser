@@ -1,0 +1,7 @@
+* Level 1 heading
+
+**** Skipping a level
+This text should be in level 4 heading
+
+** Level 2 heading
+This should belong to level 1 heading

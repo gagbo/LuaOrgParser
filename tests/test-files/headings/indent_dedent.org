@@ -1,0 +1,6 @@
+* Level 1 heading
+** Indent then dedent is still in level 2
+   This is indented text and belongs to level 2
+
+This is dedented text and belongs to level 2
+

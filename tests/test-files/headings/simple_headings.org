@@ -1,0 +1,4 @@
+* Level 1 heading
+A little text to test ownership in level 1
+** Level 2 heading
+This text should belong to level 2

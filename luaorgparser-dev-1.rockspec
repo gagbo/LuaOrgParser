@@ -1,3 +1,4 @@
+-- -*- mode: lua; -*- vim: ft=lua tw=80
 package = "LuaOrgParser"
 version = "dev-1"
 source = {
@@ -8,14 +9,13 @@ description = {
    license = "MIT"
 }
 dependencies = {
-    "lpeg >= 1.0.2"
+    "lua >= 5.1, < 5.4"
 }
 build = {
    type = "builtin",
    modules = {
       luaorgparser = "src/luaorgparser/init.lua",
       ["luaorgparser.fileUtils"] = "src/luaorgparser/fileUtils.lua",
-      ["luaorgparser.orgGrammar"] = "src/luaorgparser/orgGrammar.lua"
    },
    copy_directories = {
       "doc",

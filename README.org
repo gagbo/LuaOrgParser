@@ -2,24 +2,29 @@
 #+AUTHOR: Gerry Agbobada
 
 * Purpose
-  This is a simple org-mode file parser written in Lua. The hidden objective
-  is to later try to embed a library like this in neovim to help everyone
-  work with Org-mode files in the editor.
+ This is a simple org-mode file parser written in Lua. The hidden objective is
+ to later try to embed a library like this in neovim to help everyone work with
+ Org-mode files in the editor.
+
+* Implementation
+Since org-mode grammar is mostly context-sensitive but still mostly
+"left-to-right", this implementation aims to parse an org-buffer/file using a
+state machine that will :
+- have various states corresponding to the current context (with associated
+  relevant values),
+- take as "events" a new line from the buffer to parse, and
+- correctly update the current tree, as well as advance the state machine
+  correctly.
 
 * Dependencies
-  - Lua 5.1 :: since the end goal is to embed it in
-    [[https://github.com/neovim/neovim][Neovim]] and Neovim bundles lua5.1
-    for all its integrations
-  - LPegLJ :: the main working tool in the stack, to take the org grammar and
-    parse files / strings with the given information
+  - Lua 5.1 :: since the end goal is to embed it in [[https://github.com/neovim/neovim][Neovim]] and Neovim bundles
+    lua5.1 for all its integrations
   - LuaUnit :: it is bundled in the [[./tests][tests]] folder
 
 * Specification used
-   The [[./doc/spec/org-syntax-worg.org][spec]] used has been extracted from
-   worg and can be found
-   [[https://orgmode.org/worg/dev/org-syntax.html][here]].
+   The [[./doc/spec/org-syntax-worg.org][spec]] used has been extracted from worg and can be found [[https://orgmode.org/worg/dev/org-syntax.html][here]].
 
-* TODO Roadmap [0/4]
+* TODO Roadmap [1/12]
 ** TODO Unit test framework [1/2]
 *** DONE Install Lua Unit
 *** TODO Add test files with increasing amount of features
@@ -32,5 +37,5 @@
 *** TODO Parse timestamps
 *** TODO Parse text markups
 ** TODO Make the grammar dynamic
-   A few keywords in the grammar should be customizable at least before a
-   string / file is parsed.
+   A few keywords in the grammar should be customizable at least before a string
+   / file is parsed.

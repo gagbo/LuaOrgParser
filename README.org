@@ -2,9 +2,9 @@
 #+AUTHOR: Gerry Agbobada
 
 * Purpose
- This is a simple org-mode file parser written in Lua. The hidden objective is
- to later try to embed a library like this in neovim to help everyone work with
- Org-mode files in the editor.
+This is a simple org-mode file parser written in Lua. The hidden objective is to
+later try to embed a library like this in neovim to help everyone work with
+Org-mode files in the editor.
 
 * Implementation
 Since org-mode grammar is mostly context-sensitive but still mostly
@@ -17,12 +17,33 @@ state machine that will :
   correctly.
 
 * Dependencies
-  - Lua 5.1 :: since the end goal is to embed it in [[https://github.com/neovim/neovim][Neovim]] and Neovim bundles
-    lua5.1 for all its integrations
-  - LuaUnit :: it is bundled in the [[./tests][tests]] folder
+- Lua 5.1 :: since the end goal is to embed it in [[https://github.com/neovim/neovim][Neovim]] and Neovim bundles
+  lua5.1 for all its integrations
+- LuaUnit :: it is bundled in the [[./tests][tests]] folder
 
 * Specification used
-   The [[./doc/spec/org-syntax-worg.org][spec]] used has been extracted from worg and can be found [[https://orgmode.org/worg/dev/org-syntax.html][here]].
+The [[./doc/spec/org-syntax-worg.org][spec]] used has been extracted from worg and can be found [[https://orgmode.org/worg/dev/org-syntax.html][here]].
+
+* References in test files
+Each test file has an associated =.el= version containing only the buffer parsed
+by org-mode. The code used to generate these files is:
+
+#+BEGIN_SRC elisp
+(require 'org-element)
+
+(defun parse-file-content (file)
+  "Return the contents of FILE, as string."
+  (with-temp-buffer
+    (condition-case nil
+        (progn
+          (insert-file-contents file)
+          (org-element-parse-buffer))
+      (file-error
+       (funcall (if noerror #'message #'user-error)
+                "Unable to read file %S"
+                file)
+       nil))))
+#+END_SRC
 
 * TODO Roadmap [1/12]
 ** TODO Unit test framework [1/2]
@@ -37,5 +58,5 @@ state machine that will :
 *** TODO Parse timestamps
 *** TODO Parse text markups
 ** TODO Make the grammar dynamic
-   A few keywords in the grammar should be customizable at least before a string
-   / file is parsed.
+A few keywords in the grammar should be customizable at least before a string /
+file is parsed.

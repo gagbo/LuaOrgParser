@@ -1,4 +1,4 @@
--- -*- mode: lua-mode; -*- vim: ft=lua tw=80
+-- -*- mode: lua; -*- vim: ft=lua tw=80
 
 -- Rerun tests only if their modification time changed.
 cache = true

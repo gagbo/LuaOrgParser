@@ -45,10 +45,16 @@ by org-mode. The code used to generate these files is:
        nil))))
 #+END_SRC
 
-* TODO Roadmap [1/12]
+* TODO Roadmap [1/13]
 ** TODO Unit test framework [1/2]
 *** DONE Install Lua Unit
 *** TODO Add test files with increasing amount of features
+** TODO Add AST types
+All node types should be added ( the headline vs section vs block etc. ) with
+their attributes correctly translated.
+
+The global tree structure that provides traversal should also be added, with
+accessors for parent/children etc. to manipulate the tree
 ** TODO Bland implementation
 ** TODO Parse all syntax from "spec" [0/6]
 *** TODO Parse headlines

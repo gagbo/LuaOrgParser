@@ -11,7 +11,7 @@ function fileUtils.read_file(path)
     if not file then
         return nil
     end
-    local content = file:read "*a" -- *a or *all reads the whole file
+    local content = file:read("*all") -- *a or *all reads the whole file
     file:close()
     return content
 end

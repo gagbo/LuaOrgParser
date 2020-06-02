@@ -32,5 +32,4 @@ jobs:
 
     - name: lint
       run: |
-        luacheck src
-        luacheck tests/testing_tests.lua tests/testing_parser.lua
+        luacheck .

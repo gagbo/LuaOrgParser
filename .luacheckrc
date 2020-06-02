@@ -9,3 +9,6 @@ ignore = {
 
 globals = {
 }
+
+-- Disable luacheck on the imported luaunit
+files["tests/luaunit.lua"].only = {}

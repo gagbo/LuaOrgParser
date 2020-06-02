@@ -24,7 +24,7 @@ jobs:
         luarocks install luafilesystem
         luarocks install luacheck
 
-    - name: Install
+    - name: Build and install rockspec
       run: |
         luarocks make
 
@@ -36,4 +36,4 @@ jobs:
 
     - name: lint
       run: |
-        luacheck .
+        luacheck src tests

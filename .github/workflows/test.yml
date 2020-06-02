@@ -24,6 +24,10 @@ jobs:
         luarocks install luafilesystem
         luarocks install luacheck
 
+    - name: Install
+      run: |
+        luarocks make
+
     - name: tests
       run: |
         cd tests

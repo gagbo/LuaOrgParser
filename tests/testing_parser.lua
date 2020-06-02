@@ -75,7 +75,7 @@ function TestParser:testSinglePriorityHeadline()
             {
                 level = 4,
                 title = "This is an important item",
-                priority = "[#A]"
+                priority = "A"
             }
         )
     )

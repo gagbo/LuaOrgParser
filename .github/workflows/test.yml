@@ -31,8 +31,8 @@ jobs:
     - name: tests
       run: |
         cd tests
-        lua testing_tests.lua
-        lua testing_parser.lua
+        lua testing_tests.lua -o TAP
+        lua testing_parser.lua -o TAP
 
     - name: lint
       run: |

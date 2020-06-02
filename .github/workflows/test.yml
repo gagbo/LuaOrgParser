@@ -24,16 +24,13 @@ jobs:
         luarocks install luafilesystem
         luarocks install luacheck
 
-    - name: runtime dependencies
-      run: |
-        luarocks install lpeg
-
-    - name: test
+    - name: tests
       run: |
         cd tests
         lua testing_tests.lua
+        lua testing_parser.lua
 
     - name: lint
       run: |
         luacheck src
-        luacheck tests/testing_tests.lua
+        luacheck tests/testing_tests.lua tests/testing_parser.lua

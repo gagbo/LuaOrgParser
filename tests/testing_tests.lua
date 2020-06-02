@@ -8,6 +8,7 @@ local function my_super_function( arg1, arg2 ) return arg1 + arg2 end
 -- Unit testing starts
 local lu = require('luaunit')
 
+-- luacheck: globals TestMyStuff
 TestMyStuff = {}
     function TestMyStuff:testWithNumbers()
         local a = 1

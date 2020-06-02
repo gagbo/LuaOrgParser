@@ -1,10 +1,8 @@
 -- Headline structure
 
-local headline = {}
--- create the prototype with default values
-headline.prototype = {x = 0, y = 0, width = 100, height = 100}
--- create a metatable
-headline.mt = {
+-- create a Class with default values
+local Headline = {
+    node_type = "headline",
     raw_value = nil,
     begin_pos = nil, -- begin
     end_pos = nil, -- end
@@ -24,15 +22,13 @@ headline.mt = {
     title = nil,
     parent = nil
 }
+
 -- declare the constructor function
-function headline.new(o)
-    setmetatable(o, headline.mt)
+function Headline:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
     return o
 end
 
-headline.mt.__index = function(table, key)
-    -- TODO : error if the key is not in the prototype
-    return headline.prototype[key]
-end
-
-return headline
+return Headline

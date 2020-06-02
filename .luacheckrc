@@ -8,5 +8,4 @@ ignore = {
 }
 
 globals = {
-    "TestMyStuff", -- Name of test class in tests/ subfolder
 }
